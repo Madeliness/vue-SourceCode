@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>我是index</h1>
+    <div id="main"></div>
+    <script src="/xuni/bundle.js"></script>
+    <script>
+        var data = {
+            students: [
+                {name: '小明', age: 12, hobbies: ['游泳', '羽毛球']},
+                {name: '小红', hobbies: ['足球', '篮球', '羽毛球']}
+            ]
+        };
+        var templateStr = `
+        <ul>
+                {{#students}}
+                <li class="myli">
+                    {{name}}的爱好是：
+                    <ol>
+                        {{#hobbies}}
+                        <li>{{.}}</li>
+                        {{/hobbies}}
+                    </ol>
+                </li>
+                {{/students}}
+            </ul>
+        `;
+        // var data = {
+        //     somebody: 'vue',
+        //     a: {
+        //         b: { 
+        //             c: 100
+        //         }
+        //     }
+        // };
+        // var templateStr = `{{somebody}}很强大，评分{{a.b.c}}`
+        // var data = {
+            // students: [
+            // {name: '小明', age:23},
+            // {name: '小红', age:25},
+            // {name: '小强', age: 27}
+            // ]
+        //     fruits: ['苹果', '杏', '桃']
+        // }
+        //  var templateStr = `
+        // <ul>
+        //         {{#fruits}}
+        //         <li>
+        //            <p>年龄：{{.}}</p>
+        //         </li>
+        //         {{/fruits}}
+        //     </ul>
+        // `;
+        var htmlStr = SSG_templateEngine.render(templateStr, data)
+        document.getElementById('main').innerHTML = htmlStr
+    </script>
+</body>
+</html>

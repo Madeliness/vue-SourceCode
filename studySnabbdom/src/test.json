@@ -1,0 +1,19 @@
+{
+    "sel": "div",
+    "data": { "box": true },
+    "children": [
+        {
+            "sel": "h3",
+            "text": "我是一个标题"
+        },
+        {
+            "sel": "ul",
+            "data": {},
+            "children": [
+                { "sel": "li", "text": "牛奶" },
+                { "sel": "li", "text": "可乐" },
+                { "sel": "li", "text": "咖啡" }
+            ]
+        }
+    ]
+}
