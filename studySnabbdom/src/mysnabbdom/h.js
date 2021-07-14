@@ -39,4 +39,3 @@ export default function(sel, data, c) {
         throw new Error('传入的第三个参数类型不对')
     }
 }
-// console.log(vnode('div', 2, 3, 4,5))

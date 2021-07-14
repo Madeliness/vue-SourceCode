@@ -8,7 +8,7 @@ export default function (oldVnode, newVnode) {
         // 传入的第一个参数是dom节点，此时要包装为虚拟节点
         oldVnode = vnode(oldVnode.tagName.toLowerCase(), {}, [], undefined, oldVnode)
     }
-    console.log(oldVnode)
+    // console.log(oldVnode)
 
     // 判断oldv和newv是不是同一个节点
     if (oldVnode.key === newVnode.key && oldVnode.sel === newVnode.sel) {
@@ -16,7 +16,7 @@ export default function (oldVnode, newVnode) {
         patchVnode(oldVnode, newVnode)
     } else {
         // 不是，则暴力插入新的，删除旧的
-        console.log('新老节点不是一个，则暴力插入新的，删除旧的')
+        // console.log('新老节点不是一个，则暴力插入新的，删除旧的')
         // 插入位置：老节点之前
         let newVnodeElm = createElement(newVnode)
         // 插入到老节点之前
