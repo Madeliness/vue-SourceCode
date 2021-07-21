@@ -1,6 +1,7 @@
-import defineReactive from "./defineReactive.js";
-import Observer from "./Observer.js";
+// import defineReactive from "./defineReactive.js";
+// import Observer from "./Observer.js";
 import { observe } from "./observe.js";
+import Watcher from "./Watcher.js";
 // import {array} from './array' 
 var obj = {
     a: {
@@ -18,7 +19,9 @@ var obj = {
 };
 
 observe(obj)
-// obj.b++
-obj.g.splice(2, 1, [88, 99])
-obj.g[3] = 77
-console.log(obj.g)
+new Watcher(obj, 'a.m.n', (val) => {
+    console.log('★我是Watcher，我在监听a.m.n', val)
+})
+obj.a.m.n = 88;
+// obj.g.push(99)
+console.log('obj', obj)

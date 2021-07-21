@@ -4,11 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mysnabbdom</title>
+    <title>study-data-reactive</title>
 </head>
 <body>
-    <button id="btn">点击我改变</button>
+    <!-- <button id="btn">点击我改变</button> -->
     <div id="container"></div>
     <script src="/xuni/bundle.js"></script>
+    <script>
+        var o = {
+            a: {
+                b: {
+                    c: {
+                        d: 1
+                    }
+                }
+            }
+        }
+        // var str = 'a.b.c.d';
+        function parsePath(str) {
+            var segments = str.split('.');
+            console.log('segments:', segments)
+            return (obj) => {
+                for (let i =0; i < segments.length; i++) {
+                    if (!obj) return;
+                    obj = obj[segments[i]]
+                }
+                return obj
+            }
+        }
+        var fn = parsePath('a.b.c.d'); // 本质上是可以适配任何一个对象，把这个对象按结构拆分
+        // console.log('fn', fn)
+        var v = fn(o)
+        console.log('v:', v)
+    </script>
 </body>
 </html>

@@ -2,11 +2,14 @@ import {def} from './utils.js'
 import defineReactive from './defineReactive.js'
 import { arrayMethods } from './array.js'
 import { observe } from './observe.js'
+import Dep from './Dep.js'
 export default class Observer {
     constructor(value) {
-        // 给市里（this，构造函数中的this不是表示类本身，而是表示实例）
+        // 每一个Observer的实例身上，都有一个dep
+        this.dep = new Dep()
+        // 给实例（this，构造函数中的this不是表示类本身，而是表示实例）
         def(value, '__ob__', this, false)
-        console.log('我是Observer构造器', value)
+        // console.log('我是Observer构造器', value)
         // Observer 类的目的：将一个正常的object转换为每个层级的属性都是响应式（可以被侦测的）的object
         // 检查它是数组还是对象
         if (Array.isArray(value)) {
